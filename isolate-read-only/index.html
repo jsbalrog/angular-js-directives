@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Isolate read-only scope</title>
+	<link href="http:////maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+	<script src="lib/main.js"></script>
+</head>
+<body class="container" ng-app="myApp">
+  <p>scope : {title: @msdTitle}</p>
+  <p>controller and directive have separate scopes. 
+    Directive title is set to read-only access of controller's title.
+    If setDirectiveTitle() is clicked, connection between to title values is severed.</p>
+  <div ng-controller="myController">
+    <h2>{{title}}</h2>
+    <button ng-click="setControllerTitle('Header 2.0')">setControllerTitle()</button>
+    <div my-scoped-directive msd-title="I'm a directive, within the app {{ title }}">
+    </div>
+  </div>
+</body>
+</html>

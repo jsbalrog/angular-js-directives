@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Default scope</title>
+	<link href="http:////maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+	<script src="lib/main.js"></script>
+</head>
+<body class="container" ng-app="myApp">
+	<div ng-controller="myParentController">
+    scope: false. This is the default. The parent scope and the directive scope are the same.
+    <h2>{{ title }}</h2> <!-- same object as in child directive -->
+    <button ng-click="setAppTitle('Heading 2.0')">Upgrade</button>
+
+    <div my-scoped-directive>
+      <h4>{{ title }}</h4> <!-- same object as in parent scope -->
+      <button ng-click="setDirectiveTitle('bob')">Bob it!</button>
+    </div>
+  </div>
+</body>
+</html>
