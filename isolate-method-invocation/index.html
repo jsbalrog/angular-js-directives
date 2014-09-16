@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Isolate method invocation scope</title>
+	<link href="http:////maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+	<script src="lib/main.js"></script>
+</head>
+<body class="container" ng-app="myApp">
+  <p>scope : {updateTitle: '&msdUpdateTitle'}</p>
+  <ul>
+    <li>controller and directive have separate scopes.</li>
+    <li>'Bob it!' button calls updateTitle, which has been defined
+      in scope as mapping to msdUpdateTitle, which in turn is mapped
+      to controller's setControllerTitle() method.</li>
+    <li>updateTitle() passes value to setControllerTitle as {title: 'bob'}.</li>
+  </ul>
+  
+  <div ng-controller="myController">
+    <h2>{{ title }}</h2>
+    <h3>{{ subtitle }}</h3>
+    <button ng-click="setControllerTitle('Header 2.0', 'Still a controller')">setControllerTitles()</button>
+    
+    <div my-scoped-directive msd-update-title="setControllerTitle(title, 'Updated by directive')">
+    </div>
+  </div>
+</body>
+</html>
